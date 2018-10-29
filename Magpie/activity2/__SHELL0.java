@@ -1,8 +1,8 @@
 
-public class __SHELL2 extends bluej.runtime.Shell {
+public class __SHELL0 extends bluej.runtime.Shell {
 public static void run() throws Throwable {
 
 java.lang.String[] __bluej_param0 = { };
-Overlap.main(__bluej_param0);
+MagpieRunner2.main(__bluej_param0);
 
 }}
