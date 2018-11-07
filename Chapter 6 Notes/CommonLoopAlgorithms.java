@@ -20,6 +20,6 @@ public class CommonLoopAlgorithms
            }
        }
        
-       return 2000000;
+       return -1;
    }
 }
