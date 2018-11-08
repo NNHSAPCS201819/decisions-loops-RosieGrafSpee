@@ -15,14 +15,51 @@ public class MontyHall
     public static void main(String[] args)
     {
         Random host = new Random();
-        int doorNum = host.nextInt(3) + 1;
-        
-        System.out.println("There is a car behind one of the doors, but the others have goats");
-        System.out.print("Please input the door you think has the car: ");
-        
         Random user = new Random();
-        int choice = user.nextInt(3) + 1;
+        int switWins = 0, stayWins = 0, switLoss = 0, stayLoss = 0;
+        int numTimes = 10000000;
         
+        while (numTimes-- != 0)
+        {
+            int carNum = host.nextInt(3) + 1;
+            int choice = user.nextInt(3) + 1;
         
+            if (carNum == choice)
+            {
+                if (user.nextInt(2) == 0)
+                {
+                    stayWins++;
+                }
+                else
+                {
+                    switLoss++;
+                }
+            }
+            else
+            {
+                if (user.nextInt(2) == 0)
+                {
+                    stayLoss++;
+                }
+                else
+                {
+                    switWins++;
+                }
+            }
+        }
+        
+        System.out.println("Wins while staying: " + stayWins + "\nLosses while staying: " + stayLoss + "\nWins while switching: " + switWins + "\nLosses while switching: " + switLoss);
+    }
+    
+    int fib(int n)
+    {
+        int f1 = 1, f2 = 1, fn = f1 + f2;
+        
+        for (int i = 0; i < n - 2; i++)
+        {
+            
+        }
+        
+        return fn;
     }
 }
