@@ -12,7 +12,7 @@ public class MontyHall
     // instance variables - replace the example below with your own
     private int x;
 
-    public static void main(String[] args)
+    public static void mai()
     {
         Random host = new Random();
         Random user = new Random();
@@ -51,13 +51,28 @@ public class MontyHall
         System.out.println("Wins while staying: " + stayWins + "\nLosses while staying: " + stayLoss + "\nWins while switching: " + switWins + "\nLosses while switching: " + switLoss);
     }
     
-    int fib(int n)
+    public int fib(int n)
     {
-        int f1 = 1, f2 = 1, fn = f1 + f2;
+        int f1 = 1, f2 = 1, fn = 1;
         
         for (int i = 0; i < n - 2; i++)
         {
-            
+            fn = f1 + f2;
+            f2 = f1;
+            f1 = fn;
+        }
+        
+        return fn;
+    }
+    
+    public int fac(int n)
+    {
+        int f1 = 1, fn = 1;
+        
+        for (int i = 0; i < n; i++)
+        {
+            fn = f1 * (i + 1);
+            f1 = fn;
         }
         
         return fn;
