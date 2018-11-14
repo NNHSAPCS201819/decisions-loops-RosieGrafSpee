@@ -39,6 +39,36 @@ public class ColorManipulator
             }
         }
     }
+    
+    public void maxGreen()
+    {
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                pixel.setGreen( 255 );
+            }
+        }
+    }
+    
+    public void maxRed()
+    {
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                pixel.setRed( 255 );
+            }
+        }
+    }
 
     /**
      * Negates the color of every pixel in the picture
@@ -67,9 +97,34 @@ public class ColorManipulator
         }
     }
 
+    public void grayscale()
+    {
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                Color color = pixel.getColor();
+                
+                int avg = (color.getRed() + color.getBlue() + color.getGreen()) / 3;
+                
+                Color grayed = new Color( avg, avg, avg );
+                pixel.setColor( grayed );
+            }
+        }
+    }
+    
+    public Picture getPic()
+    {
+        return this.picture;
+    }
+    
     public static void main(String args[])
     {
-    	// the selfie image must be in the Shepard Fairey folder
+        // the selfie image must be in the Shepard Fairey folder
         Picture picture= new Picture( "selfiePortrait.jpg" );
         ColorManipulator manipulator = new ColorManipulator( picture );
         picture.explore();
