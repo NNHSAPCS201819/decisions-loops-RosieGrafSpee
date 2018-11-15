@@ -117,6 +117,35 @@ public class ColorManipulator
         }
     }
     
+    public void colorize()
+    {
+        this.grayscale();
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                
+                if (pixel.getRed() < 85)
+                {
+                    pixel.setColor(Color.red);
+                }
+                
+                else if (pixel.getRed() < 170 && pixel.getRed() >= 85)
+                {
+                    pixel.setColor(Color.green);
+                }
+                
+                else
+                {
+                    pixel.setColor(Color.blue);
+                }
+            }
+        }
+    }
+    
     public Picture getPic()
     {
         return this.picture;
@@ -128,7 +157,7 @@ public class ColorManipulator
         Picture picture= new Picture( "selfiePortrait.jpg" );
         ColorManipulator manipulator = new ColorManipulator( picture );
         picture.explore();
-        manipulator.negate();
+        manipulator.colorize();
         picture.explore();
     }
 }
