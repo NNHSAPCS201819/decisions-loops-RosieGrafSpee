@@ -10,6 +10,12 @@ public class ColorManipulator
 {
     private Picture picture;
 
+    private Color trueGreen = new Color(126, 255, 27);
+    private Color trueBlue = new Color(36, 200, 255);
+    private Color trueYellow = new Color(255, 248, 27);
+    private Color trueMagenta = new Color(255, 27, 93);
+    
+    
     /**
      * Constructs a new ColorManipulator object with the specified picture
      *
@@ -122,25 +128,111 @@ public class ColorManipulator
         this.grayscale();
         int width = this.picture.getWidth();
         int height = this.picture.getHeight();
+        
+        int min = 255, max = 0;
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                min = min > pixel.getRed() ? pixel.getRed() : min;
+                max = max < pixel.getRed() ? pixel.getRed() : max;
+            }
+        }
+        
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
                 Pixel pixel = this.picture.getPixel( x, y );
                 
-                if (pixel.getRed() < 85)
+                switch (4 * (pixel.getRed() - min + 1) / (max - min + 2))
                 {
-                    pixel.setColor(Color.red);
+                    case 0:
+                    {
+                        pixel.setColor(ShepardFairey.red);
+                        break;
+                    }
+                    
+                    case 1:
+                    {
+                        pixel.setColor(ShepardFairey.light_blue);
+                        break;
+                    }
+                    
+                    case 2:
+                    {
+                        pixel.setColor(ShepardFairey.dark_blue);
+                        break;
+                    }
+                    
+                    case 3:
+                    {
+                        pixel.setColor(ShepardFairey.off_white);
+                        break;
+                    }
+                    
+                    default:
+                    {
+                        return;
+                    }
                 }
+            }
+        }
+    }
+    
+    public void colorize2()
+    {
+        this.grayscale();
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+        
+        int min = 255, max = 0;
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                min = min > pixel.getRed() ? pixel.getRed() : min;
+                max = max < pixel.getRed() ? pixel.getRed() : max;
+            }
+        }
+        
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
                 
-                else if (pixel.getRed() < 170 && pixel.getRed() >= 85)
+                switch (3 * (pixel.getRed() - min + 1) / (max - min + 2))
                 {
-                    pixel.setColor(Color.green);
-                }
-                
-                else
-                {
-                    pixel.setColor(Color.blue);
+                    case 0:
+                    {
+                        pixel.setColor(trueGreen);
+                        break;
+                    }
+                    
+                    case 1:
+                    {
+                        pixel.setColor(trueBlue);
+                        break;
+                    }
+                    
+                    case 2:
+                    {
+                        pixel.setColor(trueMagenta);
+                        break;
+                    }
+                    
+                    case 3:
+                    {
+                        pixel.setColor(trueYellow);
+                    }
+                    
+                    default:
+                    {
+                        return;
+                    }
                 }
             }
         }

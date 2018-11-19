@@ -14,6 +14,12 @@ public class ShepardFairey
     private static final Color LIGHT_BLUE = new Color( 121, 149, 159 );
     private static final Color RED = new Color( 198, 50, 45 );
     private static final Color DARK_BLUE = new Color( 16, 48, 77 );
+    
+    public static final Color off_white = OFF_WHITE;
+    public static final Color light_blue = LIGHT_BLUE;
+    public static final Color red = RED;
+    public static final Color dark_blue = DARK_BLUE;
+    
 
     public ShepardFairey( Picture newPicture )
     {
@@ -26,14 +32,19 @@ public class ShepardFairey
      */
     public void transform()
     {
-        
+        this.manipulator.colorize();
+    }
+    
+    public void transform2()
+    {
+        this.manipulator.colorize2();
     }
 
     public static void main(String args[])
     {
         // create a new picture object based on the original selfie
         //  (the selfie image must be in the Shepard Fairey folder)
-        Picture selfie = new Picture( "selfiePortrait.jpg" );
+        Picture selfie = new Picture( "Port.jpg" );
 
         // create a ShepardFairey object to transform the selfie picture
         ShepardFairey fairey = new ShepardFairey( selfie );
@@ -50,15 +61,21 @@ public class ShepardFairey
          * You may need to specify an absolute path. For example:
          *  finalPic.write("C:\\Users\\gschmit\\GitHub\\decisions-loops-gcschmit\\Shepard Fairey\\MrSchmitPortrait.jpg");
          */
-        selfie.write( "MrSchmitPortrait.jpg" );
+        selfie.write( "C:\\Users\\zjliu\\Documents\\GitHub\\decisions-loops-RosieGrafSpee\\Shepard Fairey\\P.png" );
         
         // repeat the steps for the selfie in landscape orientation
-        selfie = new Picture( "selfieLandscape.jpg" );
+        selfie = new Picture( "Land.png" );
         fairey = new ShepardFairey( selfie );
         selfie.explore();
         fairey.transform();
-        selfie.write( "MrCallaghanLandscape.jpg" );
+        selfie.write( "C:\\Users\\zjliu\\Documents\\GitHub\\decisions-loops-RosieGrafSpee\\Shepard Fairey\\L.png" );
 
+        selfie = new Picture( "C:\\Users\\zjliu\\Pictures\\Camera Roll\\Untitled.png" );
+        fairey = new ShepardFairey( selfie );
+        selfie.explore();
+        fairey.transform2();
+        selfie.write("C:\\Users\\zjilu\\Pictures\\Camera Roll\\Capture2.png");
+        
         // display the transformed selfie picture
         selfie.explore();
     }
