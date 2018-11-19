@@ -10,8 +10,10 @@ import org.junit.Test;
  * @author  (your name)
  * @version (a version number or a date)
  */
+
 public class ColorTest
 {   
+    @Test
     public void testGray()
     {
         Random gen = new Random();
@@ -34,9 +36,9 @@ public class ColorTest
             Picture grayPic = new Picture(thing.getPic());
             Pixel grayPix = grayPic.getPixel(x, y);
             
-            assertEquals("Hi", grayPix.getRed(), sum / 3);
-            assertEquals("Hi", grayPix.getBlue(), sum / 3);
-            assertEquals("Hi", grayPix.getGreen(), sum / 3);
+            assertEquals("Not right red value", grayPix.getRed(), sum / 3);
+            assertEquals("Not right blue value", grayPix.getBlue(), sum / 3);
+            assertEquals("Not right green value", grayPix.getGreen(), sum / 3);
         }
     }
 }
